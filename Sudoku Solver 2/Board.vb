@@ -1,6 +1,28 @@
 ﻿Public Class Board
     Public cells(8, 8) As Cell
 
+    Public Function IsConsistent() As Boolean
+        'Check regions consistent
+
+        'get all regions
+        For i As Integer = 0 To 8
+            'region number i
+            Dim c As Cell() = Me.getRegion(i)
+
+            'loop through each cell in region i
+            Dim blns(8) As Boolean
+            For i2 As Integer = 0 To 8
+                Dim num As Integer = c(i2).value
+
+
+            Next
+        Next
+            'Check rows consistent
+
+            'Check columns consistent
+            Return True
+    End Function
+
     Public Sub New()
         For i As Integer = 0 To 80
             If i = 76 Then
