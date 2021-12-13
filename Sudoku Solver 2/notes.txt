@@ -1,0 +1,13 @@
+﻿Cell values are 0-9
+
+General procedure of frmSudokuSolver.vb:
+	- User inputs initial board state into the textboxes
+	- The textbox input ranges from 0-9 and ""
+		- if "", 0 is placed once Solve is clicked
+	Solve is clicked, then txtBoard (Textbox) is filled
+
+
+test boards:
+- 000050028580000760069730005094302100000075006307916000105890672000020000020063540
+	- this is an easy board
+	- I used this for testing board.isConsistent()

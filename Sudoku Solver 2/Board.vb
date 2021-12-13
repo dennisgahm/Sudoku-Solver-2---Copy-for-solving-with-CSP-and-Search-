@@ -13,14 +13,44 @@
             Dim blns(8) As Boolean
             For i2 As Integer = 0 To 8
                 Dim num As Integer = c(i2).value
-
-
+                If num = 0 Then
+                    Continue For
+                End If
+                blns(num - 1) = True
             Next
         Next
-            'Check rows consistent
+        'Check rows consistent
+        For i As Integer = 0 To 8
+            'region number i
+            Dim c As Cell() = Me.GetRow(i)
 
-            'Check columns consistent
-            Return True
+            'loop through each cell in region i
+            Dim blns(8) As Boolean
+            For i2 As Integer = 0 To 8
+                Dim num As Integer = c(i2).value
+                If num = 0 Then
+                    Continue For
+                End If
+                blns(num - 1) = True
+            Next
+        Next
+
+        'Check columns consistent
+        For i As Integer = 0 To 8
+            'region number i
+            Dim c As Cell() = Me.getColumn(i)
+
+            'loop through each cell in region i
+            Dim blns(8) As Boolean
+            For i2 As Integer = 0 To 8
+                Dim num As Integer = c(i2).value
+                If num = 0 Then
+                    Continue For
+                End If
+                blns(num - 1) = True
+            Next
+        Next
+        Return True
     End Function
 
     Public Sub New()

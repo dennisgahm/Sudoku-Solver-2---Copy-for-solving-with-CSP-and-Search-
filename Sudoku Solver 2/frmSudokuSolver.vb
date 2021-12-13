@@ -12,6 +12,9 @@
             Panel2.Controls.Add(textboxes(i))
         Next
 
+
+
+
     End Sub
 
     Private Sub btnSolve_Click(sender As Object, e As EventArgs) Handles btnSolve.Click
@@ -39,7 +42,7 @@
             Dim c As String = txtBoard.Text.Chars(i)
             Dim temp As Integer = Integer.Parse(c)
             board.cells(Math.Truncate(i / 9), i Mod 9).value = temp
-            textboxes(i).Text = temp
+            textboxes(i).Text = temp 'I believe the textboxes are already filled - but this adds 0s in the place of ""
         Next
     End Sub
 
@@ -297,5 +300,20 @@
                 Next
             End If
         Next
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'debug/test
+        If txtBoard.Text = "" Then
+            For i As Integer = 0 To 80
+                If textboxes(i).Text = "" Then
+                    txtBoard.AppendText("0")
+                Else
+                    txtBoard.AppendText(textboxes(i).Text)
+                End If
+            Next
+        End If
+        CreateBoard()
+        Me.Text = board.IsConsistent()
     End Sub
 End Class

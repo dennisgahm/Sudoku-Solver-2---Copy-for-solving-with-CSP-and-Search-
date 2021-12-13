@@ -1,7 +1,7 @@
 ﻿Public Class Cell
     Public possibilities(8) As Boolean
     Public cant_be(8) As Boolean
-    Public value As Integer
+    Public value As Integer '0-9
     Public row As Integer
     Public col As Integer
     Public reg As Integer
