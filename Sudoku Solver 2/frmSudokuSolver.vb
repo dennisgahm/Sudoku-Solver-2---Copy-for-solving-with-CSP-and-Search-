@@ -302,7 +302,8 @@
         Next
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+    Private Sub TestButton()
         'debug/test
         If txtBoard.Text = "" Then
             For i As Integer = 0 To 80
@@ -315,5 +316,35 @@
         End If
         CreateBoard()
         Me.Text = board.IsConsistent()
+
+    End Sub
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        'Solver
+        If txtBoard.Text = "" Then
+            For i As Integer = 0 To 80
+                If textboxes(i).Text = "" Then
+                    txtBoard.AppendText("0")
+                Else
+                    txtBoard.AppendText(textboxes(i).Text)
+                End If
+            Next
+        End If
+        CreateBoard()
+
+        'Pseudocode
+        '   While !finished
+        '       Check if finished
+        '       consistency check
+        '       if true, then assign a variable a value
+        '           This step uses heuristics
+        'Me.Text = board.IsConsistent()
+
+        'note: eventually use the inferences of the search in the form
+        '   even in bruteforce search, try implementing the form functions
+        Dim blnFinished As Boolean = False
+        While Not blnFinished
+            'check for infinite loop or search complete and failed
+        End While
     End Sub
 End Class

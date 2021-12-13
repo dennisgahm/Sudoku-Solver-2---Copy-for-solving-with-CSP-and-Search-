@@ -1,55 +1,60 @@
 ﻿Public Class Board
     Public cells(8, 8) As Cell
 
-    Public Function IsConsistent() As Boolean
-        'Check regions consistent
+    Public Function IsSectionConsistent(ByVal c As Cell()) As Boolean
+        'loop through each cell in region i
+        Dim blns(8) As Boolean
+        For i2 As Integer = 0 To 8
+            Dim num As Integer = c(i2).value
+            If num = 0 Then
+                Continue For
+            End If
 
+            If blns(num - 1) Then
+                Return False
+            Else
+                blns(num - 1) = True
+            End If
+        Next
+
+        Return True
+    End Function
+
+    Public Function IsConsistent() As Boolean
+
+        'Check regions consistent
         'get all regions
         For i As Integer = 0 To 8
             'region number i
             Dim c As Cell() = Me.getRegion(i)
-
-            'loop through each cell in region i
-            Dim blns(8) As Boolean
-            For i2 As Integer = 0 To 8
-                Dim num As Integer = c(i2).value
-                If num = 0 Then
-                    Continue For
-                End If
-                blns(num - 1) = True
-            Next
+            Dim bln As Boolean = IsSectionConsistent(c)
+            If Not bln Then
+                Return False
+            End If
         Next
+
         'Check rows consistent
+        'get all rows
         For i As Integer = 0 To 8
             'region number i
             Dim c As Cell() = Me.GetRow(i)
-
-            'loop through each cell in region i
-            Dim blns(8) As Boolean
-            For i2 As Integer = 0 To 8
-                Dim num As Integer = c(i2).value
-                If num = 0 Then
-                    Continue For
-                End If
-                blns(num - 1) = True
-            Next
+            Dim bln As Boolean = IsSectionConsistent(c)
+            If Not bln Then
+                Return False
+            End If
         Next
 
         'Check columns consistent
+        'get all columns
         For i As Integer = 0 To 8
             'region number i
             Dim c As Cell() = Me.getColumn(i)
-
-            'loop through each cell in region i
-            Dim blns(8) As Boolean
-            For i2 As Integer = 0 To 8
-                Dim num As Integer = c(i2).value
-                If num = 0 Then
-                    Continue For
-                End If
-                blns(num - 1) = True
-            Next
+            Dim bln As Boolean = IsSectionConsistent(c)
+            If Not bln Then
+                Return False
+            End If
         Next
+
         Return True
     End Function
 
