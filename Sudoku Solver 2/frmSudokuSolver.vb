@@ -12,7 +12,7 @@
             Panel2.Controls.Add(textboxes(i))
         Next
 
-
+        Me.Size = New Size(1390, 500)
 
 
     End Sub
@@ -303,6 +303,7 @@
     End Sub
 
 
+    'Tests if consistent checking is working (board.isconsistent() )
     Private Sub TestButton()
         'debug/test
         If txtBoard.Text = "" Then
@@ -320,7 +321,7 @@
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        'Solver
+        'Test
         If txtBoard.Text = "" Then
             For i As Integer = 0 To 80
                 If textboxes(i).Text = "" Then
@@ -331,6 +332,24 @@
             Next
         End If
         CreateBoard()
+        Me.Text = board.IsComplete()
+        Return
+
+        ''Test
+        'TestButton()
+        'Return
+
+        ''Solver
+        'If txtBoard.Text = "" Then
+        '    For i As Integer = 0 To 80
+        '        If textboxes(i).Text = "" Then
+        '            txtBoard.AppendText("0")
+        '        Else
+        '            txtBoard.AppendText(textboxes(i).Text)
+        '        End If
+        '    Next
+        'End If
+        'CreateBoard()
 
         'Pseudocode
         '   While !finished
@@ -345,6 +364,8 @@
         Dim blnFinished As Boolean = False
         While Not blnFinished
             'check for infinite loop or search complete and failed
+            'Are all variables assigned?
+
         End While
     End Sub
 End Class

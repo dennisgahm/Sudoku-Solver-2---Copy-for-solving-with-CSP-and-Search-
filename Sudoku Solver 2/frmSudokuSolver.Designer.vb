@@ -32,7 +32,7 @@ Partial Class frmSudokuSolver
         'Panel1
         '
         Me.Panel1.Location = New System.Drawing.Point(16, 15)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(800, 750)
         Me.Panel1.TabIndex = 0
@@ -40,7 +40,7 @@ Partial Class frmSudokuSolver
         'Panel2
         '
         Me.Panel2.Location = New System.Drawing.Point(1096, 15)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(533, 716)
         Me.Panel2.TabIndex = 1
@@ -48,7 +48,7 @@ Partial Class frmSudokuSolver
         'btnSolve
         '
         Me.btnSolve.Location = New System.Drawing.Point(1637, 15)
-        Me.btnSolve.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSolve.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSolve.Name = "btnSolve"
         Me.btnSolve.Size = New System.Drawing.Size(100, 32)
         Me.btnSolve.TabIndex = 2
@@ -58,7 +58,7 @@ Partial Class frmSudokuSolver
         'txtBoard
         '
         Me.txtBoard.Location = New System.Drawing.Point(1637, 56)
-        Me.txtBoard.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtBoard.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBoard.Name = "txtBoard"
         Me.txtBoard.Size = New System.Drawing.Size(461, 31)
         Me.txtBoard.TabIndex = 3
@@ -76,13 +76,13 @@ Partial Class frmSudokuSolver
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(2656, 870)
+        Me.ClientSize = New System.Drawing.Size(2164, 872)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtBoard)
         Me.Controls.Add(Me.btnSolve)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmSudokuSolver"
         Me.Text = "Sudoku Solver by Dennis"
         Me.ResumeLayout(False)
