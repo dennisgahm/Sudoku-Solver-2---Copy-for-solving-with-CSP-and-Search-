@@ -321,19 +321,19 @@
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        'Test
-        If txtBoard.Text = "" Then
-            For i As Integer = 0 To 80
-                If textboxes(i).Text = "" Then
-                    txtBoard.AppendText("0")
-                Else
-                    txtBoard.AppendText(textboxes(i).Text)
-                End If
-            Next
-        End If
-        CreateBoard()
-        Me.Text = board.IsComplete()
-        Return
+        ''Test
+        'If txtBoard.Text = "" Then
+        '    For i As Integer = 0 To 80
+        '        If textboxes(i).Text = "" Then
+        '            txtBoard.AppendText("0")
+        '        Else
+        '            txtBoard.AppendText(textboxes(i).Text)
+        '        End If
+        '    Next
+        'End If
+        'CreateBoard()
+        'Me.Text = board.IsComplete()
+        'Return
 
         ''Test
         'TestButton()
@@ -365,7 +365,22 @@
         While Not blnFinished
             'check for infinite loop or search complete and failed
             'Are all variables assigned?
-
+            If board.IsComplete() Then
+                blnFinished = True
+                Continue While
+            End If
         End While
     End Sub
+
+    Private Function ChooseVariable() As Cell
+        For i As Integer = 0 To 9
+            For i2 As Integer = 0 To 9
+                If board.cells(i, i2).value = 0 Then
+                    Return board.cells(i, i2)
+                End If
+            Next
+        Next
+
+        Return Nothing
+    End Function
 End Class
