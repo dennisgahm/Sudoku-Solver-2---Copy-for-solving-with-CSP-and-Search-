@@ -27,6 +27,7 @@ Partial Class frmSudokuSolver
         Me.btnSolve = New System.Windows.Forms.Button()
         Me.txtBoard = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Panel1
@@ -72,11 +73,21 @@ Partial Class frmSudokuSolver
         Me.Button1.Text = "test"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(1747, 340)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(309, 107)
+        Me.Button2.TabIndex = 5
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'frmSudokuSolver
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(2164, 872)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtBoard)
         Me.Controls.Add(Me.btnSolve)
@@ -95,4 +106,5 @@ Partial Class frmSudokuSolver
     Friend WithEvents btnSolve As Button
     Friend WithEvents txtBoard As TextBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class
