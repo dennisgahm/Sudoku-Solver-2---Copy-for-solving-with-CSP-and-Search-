@@ -324,7 +324,7 @@
         If txtBoard.Text = "" Then
             For i As Integer = 0 To 80
                 If textboxes(i).Text = "" Then
-                    txtBoard.AppendText("0")
+                    txtBoard.AppendText("0") 'Shows that boards have 0 for empty cells
                 Else
                     txtBoard.AppendText(textboxes(i).Text)
                 End If
@@ -345,6 +345,10 @@
         Dim blnFinished As Boolean = False
         While Not blnFinished
             'check for infinite loop or search complete and failed
+            'If got to this point: blnFinished = false
+
+
+
         End While
     End Sub
 End Class
