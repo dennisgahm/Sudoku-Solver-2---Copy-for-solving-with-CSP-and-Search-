@@ -12,7 +12,7 @@
             Panel2.Controls.Add(textboxes(i))
         Next
 
-
+        Me.Size = New Size(1390, 500)
 
 
     End Sub
@@ -303,6 +303,7 @@
     End Sub
 
 
+    'Tests if consistent checking is working (board.isconsistent() )
     Private Sub TestButton()
         'debug/test
         If txtBoard.Text = "" Then
@@ -320,17 +321,35 @@
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        'Solver
-        If txtBoard.Text = "" Then
-            For i As Integer = 0 To 80
-                If textboxes(i).Text = "" Then
-                    txtBoard.AppendText("0") 'Shows that boards have 0 for empty cells
-                Else
-                    txtBoard.AppendText(textboxes(i).Text)
-                End If
-            Next
-        End If
-        CreateBoard()
+        ''Test
+        'If txtBoard.Text = "" Then
+        '    For i As Integer = 0 To 80
+        '        If textboxes(i).Text = "" Then
+        '            txtBoard.AppendText("0")
+        '        Else
+        '            txtBoard.AppendText(textboxes(i).Text)
+        '        End If
+        '    Next
+        'End If
+        'CreateBoard()
+        'Me.Text = board.IsComplete()
+        'Return
+
+        ''Test
+        'TestButton()
+        'Return
+
+        ''Solver
+        'If txtBoard.Text = "" Then
+        '    For i As Integer = 0 To 80
+        '        If textboxes(i).Text = "" Then
+        '            txtBoard.AppendText("0")
+        '        Else
+        '            txtBoard.AppendText(textboxes(i).Text)
+        '        End If
+        '    Next
+        'End If
+        'CreateBoard()
 
         'Pseudocode
         '   While !finished
@@ -345,10 +364,23 @@
         Dim blnFinished As Boolean = False
         While Not blnFinished
             'check for infinite loop or search complete and failed
-            'If got to this point: blnFinished = false
-
-
-
+            'Are all variables assigned?
+            If board.IsComplete() Then
+                blnFinished = True
+                Continue While
+            End If
         End While
     End Sub
+
+    Private Function ChooseVariable() As Cell
+        For i As Integer = 0 To 9
+            For i2 As Integer = 0 To 9
+                If board.cells(i, i2).value = 0 Then
+                    Return board.cells(i, i2)
+                End If
+            Next
+        Next
+
+        Return Nothing
+    End Function
 End Class

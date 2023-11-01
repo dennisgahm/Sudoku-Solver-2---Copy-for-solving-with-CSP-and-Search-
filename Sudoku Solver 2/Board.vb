@@ -1,6 +1,18 @@
 ﻿Public Class Board
     Public cells(8, 8) As Cell
 
+    Public Function IsComplete() As Boolean
+        'Check if all variables assigned
+        For i As Integer = 0 To 8
+            For i2 As Integer = 0 To 8
+                If cells(i, i2).value = 0 Then
+                    Return False
+                End If
+            Next
+        Next
+        Return IsConsistent()
+    End Function
+
     Public Function IsSectionConsistent(ByVal c As Cell()) As Boolean
         'loop through each cell in region i
         Dim blns(8) As Boolean
