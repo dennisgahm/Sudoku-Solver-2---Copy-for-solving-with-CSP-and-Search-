@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.vb" />
+    <Compile Include="BreadthFirstSearch.vb" />
     <Compile Include="Cell.vb" />
     <Compile Include="frmSudokuSolver.vb">
       <SubType>Form</SubType>
