@@ -32,68 +32,65 @@ Partial Class frmSudokuSolver
         '
         'Panel1
         '
-        Me.Panel1.Location = New System.Drawing.Point(16, 15)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 750)
+        Me.Panel1.Size = New System.Drawing.Size(600, 600)
         Me.Panel1.TabIndex = 0
         '
         'Panel2
         '
-        Me.Panel2.Location = New System.Drawing.Point(1096, 15)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel2.Location = New System.Drawing.Point(822, 12)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(533, 716)
+        Me.Panel2.Size = New System.Drawing.Size(400, 573)
         Me.Panel2.TabIndex = 1
         '
         'btnSolve
         '
-        Me.btnSolve.Location = New System.Drawing.Point(1637, 15)
-        Me.btnSolve.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSolve.Location = New System.Drawing.Point(1228, 12)
         Me.btnSolve.Name = "btnSolve"
-        Me.btnSolve.Size = New System.Drawing.Size(100, 32)
+        Me.btnSolve.Size = New System.Drawing.Size(75, 26)
         Me.btnSolve.TabIndex = 2
         Me.btnSolve.Text = "Solve"
         Me.btnSolve.UseVisualStyleBackColor = True
         '
         'txtBoard
         '
-        Me.txtBoard.Location = New System.Drawing.Point(1637, 56)
-        Me.txtBoard.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtBoard.Location = New System.Drawing.Point(1228, 45)
         Me.txtBoard.Name = "txtBoard"
-        Me.txtBoard.Size = New System.Drawing.Size(461, 31)
+        Me.txtBoard.Size = New System.Drawing.Size(347, 26)
         Me.txtBoard.TabIndex = 3
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(1715, 156)
+        Me.Button1.Location = New System.Drawing.Point(1286, 125)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(151, 73)
+        Me.Button1.Size = New System.Drawing.Size(113, 58)
         Me.Button1.TabIndex = 4
         Me.Button1.Text = "test"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(1747, 340)
+        Me.Button2.Location = New System.Drawing.Point(1247, 273)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(309, 107)
+        Me.Button2.Size = New System.Drawing.Size(232, 86)
         Me.Button2.TabIndex = 5
-        Me.Button2.Text = "Button2"
+        Me.Button2.Text = "Brute Force"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'frmSudokuSolver
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(2164, 872)
+        Me.ClientSize = New System.Drawing.Size(1443, 698)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtBoard)
         Me.Controls.Add(Me.btnSolve)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmSudokuSolver"
         Me.Text = "Sudoku Solver by Dennis"
         Me.ResumeLayout(False)

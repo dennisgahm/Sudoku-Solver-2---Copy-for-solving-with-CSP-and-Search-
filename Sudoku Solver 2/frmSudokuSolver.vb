@@ -383,4 +383,52 @@
 
         Return Nothing
     End Function
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        'If txtBoard is empty, then convert the textboxes into a string and solve
+        If txtBoard.Text = "" Then
+            For i As Integer = 0 To 80
+                If textboxes(i).Text = "" Then
+                    txtBoard.AppendText("0")
+                Else
+                    txtBoard.AppendText(textboxes(i).Text)
+                End If
+            Next
+            CreateBoard()
+            BruteForceSolve()
+        Else
+            CreateBoard()
+            BruteForceSolve()
+        End If
+    End Sub
+
+    Private Sub BruteForceSolve()
+
+        'Solve as much as possible
+        Dim cont2 As Boolean = True
+        While cont2
+            Dim boardOriginal As Board = board.clone()
+            findAllPossibilities()
+            solveOnePossibility()
+            solveOnePossibility2()
+            possibilitiesCrossOut()
+            findAllPossibilities()
+            solveOnePossibility()
+            solveOnePossibility2()
+            If board.sameBoard(boardOriginal, board) Then
+                cont2 = False
+            End If
+        End While
+
+        'Brute Force
+        Dim cont As Boolean = True
+        While cont
+            Dim boardOriginal As Board = board.clone()
+            findAllPossibilities()
+            If board.IsComplete() Then
+                cont = False
+            End If
+        End While
+        Me.Refresh()
+    End Sub
 End Class
