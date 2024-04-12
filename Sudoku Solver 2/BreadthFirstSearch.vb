@@ -22,7 +22,7 @@
     End Function
 
     Public Function IsSolution(ByVal puzzle As Board) As Boolean
-        puzzle.IsComplete()
+        Return puzzle.IsComplete()
     End Function
 
 
@@ -31,45 +31,41 @@
             Dim nodeToExpand As Board = queue.Dequeue()
             numNodesExpanded += 1
 
+            Dim clone As Board = nodeToExpand.clone()
+            Dim clone2 As Board = nodeToExpand.clone()
 
-            'Execute all legal moves
-            If nodeToExpand.IsLegalMove("u") Then
-                Dim node2 As Board = New Board(nodeToExpand)
-                node2.Move("u")
+            Dim blnFinished As Boolean = False
+            'Create a node that sets on of the possibilities to true.
+            For i As Integer = 0 To 8
+                For i2 As Integer = 0 To 8
+                    If clone.cells(i, i2).value = 0 Then
+                        For i3 As Integer = 0 To 8
+                            If clone.cells(i, i2).possibilities(i3) = True Then
+                                clone2.cells(i, i2).value = i3 + 1
+                                blnFinished = True
 
-                If (Not puzzleOrganizer.BinarySearch(node2) = -1) Then
+                                clone.cells(i, i2).possibilities(i3) = False
+                                Exit For
+                            End If
+                        Next
+                    End If
 
-                    queue.Enqueue(node2)
+                    If blnFinished Then
+                        Exit For
+                    End If
+                Next
+
+                If blnFinished Then
+                    Exit For
                 End If
-            End If
+            Next
 
-            If nodeToExpand.IsLegalMove("d") Then
-                Dim node2 As Board = New Board(nodeToExpand)
-                node2.Move("d")
-                If (Not puzzleOrganizer.BinarySearch(node2) = -1) Then
+            'add node to queue
+            queue.Enqueue(clone2)
 
-                    queue.Enqueue(node2)
-                End If
-            End If
+            'Create a node that sets the possibility to be taken and false
+            queue.Enqueue(clone)
 
-            If nodeToExpand.IsLegalMove("l") Then
-                Dim node2 As Board = New Board(nodeToExpand)
-                node2.Move("l")
-                If (Not puzzleOrganizer.BinarySearch(node2) = -1) Then
-
-                    queue.Enqueue(node2)
-                End If
-            End If
-
-            If nodeToExpand.IsLegalMove("r") Then
-                Dim node2 As Board = New Board(nodeToExpand)
-                node2.Move("r")
-                If (Not puzzleOrganizer.BinarySearch(node2) = -1) Then
-
-                    queue.Enqueue(node2)
-                End If
-
-            End If
 
             Return nodeToExpand
         End If

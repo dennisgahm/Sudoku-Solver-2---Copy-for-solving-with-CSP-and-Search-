@@ -1,6 +1,8 @@
 ﻿Public Class frmSudokuSolver
     Dim textboxes(80) As TextBox
     Dim board As Board = New Board
+    Public queue As Queue(Of Board) = New Queue(Of Board)()
+    Public numNodesExpanded As Integer = 0
     Private Sub frmSudokuSolver_Load(sender As Object, e As EventArgs) Handles Me.Load
         'Create textboxes for input of Sudoku Board
         For i As Integer = 0 To 80
@@ -74,7 +76,7 @@
                 If cellsWithPossibility.Length = 0 Then
                     Continue For
                 ElseIf cellsWithPossibility.Length = 1 Then
-                    Throw New System.Exception("only one possibility in a section when this situation is covered by previous method")
+                    'Throw New System.Exception("only one possibility in a section when this situation is covered by previous method")
                 End If
                 If i = 8 And num = 6 Then
                     num = num
@@ -421,14 +423,94 @@
         End While
 
         'Brute Force
-        Dim cont As Boolean = True
-        While cont
-            Dim boardOriginal As Board = board.clone()
-            findAllPossibilities()
-            If board.IsComplete() Then
-                cont = False
+
+        numNodesExpanded = 0
+        queue.Enqueue(board.clone())
+        While queue.Count > 0
+            'Board = bfs.queue.Dequeue()
+            Dim nodeExpanded As Board = BFSExpandNode()
+            If nodeExpanded.IsComplete() Then
+                'Return nodeExpanded
+                Exit While
             End If
         End While
+        'Return Nothing
+        'board = bfsSearch.FindSolution()
+
         Me.Refresh()
     End Sub
+
+    Public Function BFSExpandNode() As Board
+        If queue.Count <> 0 Then
+            Dim nodeToExpand As Board = queue.Dequeue()
+            numNodesExpanded += 1
+
+            Dim clone As Board = nodeToExpand.clone()
+            Dim clone2 As Board = nodeToExpand.clone()
+
+            Dim blnFinished As Boolean = False
+            'Create a node that sets on of the possibilities to true.
+            For i As Integer = 0 To 8
+                For i2 As Integer = 0 To 8
+                    If clone.cells(i, i2).value = 0 Then
+                        For i3 As Integer = 0 To 8
+                            If clone.cells(i, i2).possibilities(i3) = True And clone.cells(i, i2).cant_be(i3) = False Then
+                                clone2.cells(i, i2).value = i3 + 1
+
+                                board = clone2
+
+                                findAllPossibilities()
+                                'solveOnePossibility()
+                                'solveOnePossibility2()
+                                'possibilitiesCrossOut()
+                                'findAllPossibilities()
+                                'solveOnePossibility()
+                                'solveOnePossibility2()
+
+                                clone2 = board.clone()
+
+                                blnFinished = True
+
+                                clone.cells(i, i2).cant_be(i3) = True
+                                board = clone
+
+                                findAllPossibilities()
+                                'solveOnePossibility()
+                                'solveOnePossibility2()
+                                'possibilitiesCrossOut()
+                                'findAllPossibilities()
+                                'solveOnePossibility()
+                                'solveOnePossibility2()
+
+                                clone = board.clone()
+
+                                Exit For
+                            End If
+                        Next
+                    End If
+
+                    If blnFinished Then
+                        Exit For
+                    End If
+                Next
+
+                If blnFinished Then
+                    Exit For
+                End If
+            Next
+
+            'add node to queue
+            queue.Enqueue(clone2)
+
+            'Create a node that sets the possibility to be taken and false
+            queue.Enqueue(clone)
+
+
+            Return nodeToExpand
+        End If
+
+        Return Nothing
+
+
+    End Function
 End Class
